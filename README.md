@@ -47,7 +47,7 @@
 
 ### 3.注意事项
 
-如果使用ZScollLabel的ViewControler有NavigationController，那么请务必要在`-(void)viewDidLoad`方法中添加`self.automaticallyAdjustsScrollViewInsets = NO;`让ZScrollLabel的Frame计算从屏幕顶部开始，而不是状态的底部开始。
+如果使用ZScollLabel的ViewControler有NavigationController，那么请务必要在`-(void)viewDidLoad`方法中添加`self.automaticallyAdjustsScrollViewInsets = NO;`让ZScrollLabel的Frame计算从屏幕顶部开始，而不是从导航栏的底部开始。
 
 ## 四、实现原理
 
