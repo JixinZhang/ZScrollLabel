@@ -56,12 +56,14 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     
     self.titleLabel.text = @"跑马灯label";
+    self.titleLabel.labelAlignment = ZScrollLabelAlignmentLeft;
     [self.view addSubview:self.titleLabel];
     
     self.contentLabel.text = @"一身诗意千寻瀑，万古人间四月天";
     [self.view addSubview:self.contentLabel];
     
     self.shortLabel.text = @"Hello, world";
+    self.shortLabel.labelAlignment = ZScrollLabelAlignmentRight;
     [self.view addSubview:self.shortLabel];
 }
 

@@ -66,6 +66,7 @@
     _paddingBetweenLabels = kDefaultPadding;
     _autoBeginScroll = YES;
     _manualStop = NO;
+    _labelAlignment = ZScrollLabelAlignmentCenter;
     self.userInteractionEnabled = NO;
     
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -117,6 +118,11 @@
     _scrollDuration = scrollDuration;
 }
 
+- (void)setLabelAlignment:(ZScrollLabelAlignment)labelAlignment {
+    _labelAlignment = labelAlignment;
+    [self setLabelsFrame];
+}
+
 #pragma mark - Private
 
 /**
@@ -161,7 +167,13 @@
         self.scrolling = NO;
         self.labelCopy.hidden = YES;
         CGPoint center = self.label.center;
-        center.x = self.center.x - self.frame.origin.x;
+        if (self.labelAlignment == ZScrollLabelAlignmentLeft) {
+            center.x = self.label.frame.size.width / 2.0;
+        } else if (self.labelAlignment == ZScrollLabelAlignmentCenter) {
+            center.x = self.center.x - self.frame.origin.x;
+        } else {
+            center.x = self.frame.size.width - self.label.frame.size.width / 2.0;
+        }
         self.label.center = center;
     }
 }

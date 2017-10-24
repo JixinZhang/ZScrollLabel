@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+typedef NS_ENUM(NSUInteger, ZScrollLabelAlignment) {
+    ZScrollLabelAlignmentLeft = 0,
+    ZScrollLabelAlignmentCenter,
+    ZScrollLabelAlignmentRight
+};
+
 /**
  *  跑马灯Label
  *  当Text对应的Width超过了Frame宽度，滚动显示效果自动开启；
@@ -20,7 +26,8 @@
 @property (nonatomic, strong) NSString *text;
 
 @property (nonatomic, assign) CGFloat scrollDuration;                   //滚动总时长，默认为10秒
-@property (nonatomic, assign) CGFloat paddingBetweenLabels;             //两个label之间的距离
+@property (nonatomic, assign) CGFloat paddingBetweenLabels;             //两个label之间的距离，默认为20
+@property (nonatomic, assign) ZScrollLabelAlignment labelAlignment;     //当文字长度未超过Frame宽度时的对齐方式：左，中，右。默认为居中对齐。
 
 @property (nonatomic, assign) CGFloat delayInterval;                    //延迟开始第一次滚动(单位：秒)， 默认为3秒
 @property (nonatomic, assign) CGFloat pauseInterval;                    //循环滚动时，中间停止的时长(单位：秒)， 默认为3秒
