@@ -9,6 +9,7 @@
 #import "ZScrollLabel.h"
 
 #define kDefaultScrollDuration 10
+#define kDefaultSrollVelocity 37.5
 #define kDefaultPauseTime 3.0
 #define kDefaultPadding 20.0
 #define kDefaultDelay 3.0
@@ -61,6 +62,7 @@
     [self addSubview:self.contentView];
     
     _scrollDuration = kDefaultScrollDuration;
+    _scrollVelocity = kDefaultSrollVelocity;
     _pauseInterval = kDefaultPauseTime;
     _delayInterval = kDefaultDelay;
     _paddingBetweenLabels = kDefaultPadding;
@@ -114,8 +116,11 @@
     self.labelCopy.font = font;
 }
 
-- (void)setScrollDuration:(CGFloat)scrollDuration {
-    _scrollDuration = scrollDuration;
+- (void)setScrollVelocity:(CGFloat)scrollVelocity {
+    if (scrollVelocity <= 0) {
+        scrollVelocity = kDefaultSrollVelocity;
+    }
+    _scrollVelocity = scrollVelocity;
 }
 
 - (void)setLabelAlignment:(ZScrollLabelAlignment)labelAlignment {
@@ -158,6 +163,7 @@
     self.contentView.frame = CGRectMake(0, 0, size.width, size.height);
     
     if (self.label.frame.size.width > self.frame.size.width) {
+        self.scrollDuration = self.label.frame.size.width / self.scrollVelocity;
         self.label.hidden = NO;
         self.labelCopy.hidden = NO;
         if (self.autoBeginScroll) {

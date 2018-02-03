@@ -26,6 +26,7 @@ typedef NS_ENUM(NSUInteger, ZScrollLabelAlignment) {
 @property (nonatomic, strong) NSString *text;
 
 @property (nonatomic, assign) CGFloat scrollDuration;                   //滚动总时长，默认为10秒
+@property (nonatomic, assign) CGFloat scrollVelocity;                   //滚动速率，默认为37.5(pt/s)。赋值必须大于0，否则速率默认为37.5
 @property (nonatomic, assign) CGFloat paddingBetweenLabels;             //两个label之间的距离，默认为20
 @property (nonatomic, assign) ZScrollLabelAlignment labelAlignment;     //当文字长度未超过Frame宽度时的对齐方式：左，中，右。默认为居中对齐。
 
